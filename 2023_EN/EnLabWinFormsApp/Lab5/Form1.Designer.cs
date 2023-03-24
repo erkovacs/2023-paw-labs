@@ -31,6 +31,7 @@ namespace EnLabWinFormsApp
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.displacement = new System.Windows.Forms.NumericUpDown();
             this.topSpeed = new System.Windows.Forms.NumericUpDown();
             this.manufacturer = new System.Windows.Forms.ComboBox();
@@ -38,15 +39,22 @@ namespace EnLabWinFormsApp
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.addCarBtn = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.carsLv = new System.Windows.Forms.ListView();
+            this.colDisplacement = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colTopSpeed = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colManufacturer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.displacement)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.topSpeed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // displacement
             // 
             this.displacement.Location = new System.Drawing.Point(130, 23);
             this.displacement.Maximum = new decimal(new int[] {
-            10000,
+            100000,
             0,
             0,
             0});
@@ -63,18 +71,22 @@ namespace EnLabWinFormsApp
             0,
             0,
             0});
+            this.displacement.Validating += new System.ComponentModel.CancelEventHandler(this.displacement_Validating);
+            this.displacement.Validated += new System.EventHandler(this.displacement_Validated);
             // 
             // topSpeed
             // 
             this.topSpeed.Location = new System.Drawing.Point(130, 66);
             this.topSpeed.Maximum = new decimal(new int[] {
-            450,
+            1000,
             0,
             0,
             0});
             this.topSpeed.Name = "topSpeed";
             this.topSpeed.Size = new System.Drawing.Size(324, 22);
             this.topSpeed.TabIndex = 1;
+            this.topSpeed.Validating += new System.ComponentModel.CancelEventHandler(this.topSpeed_Validating);
+            this.topSpeed.Validated += new System.EventHandler(this.topSpeed_Validated);
             // 
             // manufacturer
             // 
@@ -121,11 +133,50 @@ namespace EnLabWinFormsApp
             this.addCarBtn.UseVisualStyleBackColor = true;
             this.addCarBtn.Click += new System.EventHandler(this.addCarBtn_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
+            // carsLv
+            // 
+            this.carsLv.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colId,
+            this.colDisplacement,
+            this.colTopSpeed,
+            this.colManufacturer});
+            this.carsLv.HideSelection = false;
+            this.carsLv.Location = new System.Drawing.Point(29, 181);
+            this.carsLv.Name = "carsLv";
+            this.carsLv.Size = new System.Drawing.Size(741, 247);
+            this.carsLv.TabIndex = 7;
+            this.carsLv.UseCompatibleStateImageBehavior = false;
+            this.carsLv.View = System.Windows.Forms.View.Details;
+            // 
+            // colDisplacement
+            // 
+            this.colDisplacement.Text = "Displacement";
+            this.colDisplacement.Width = 187;
+            // 
+            // colTopSpeed
+            // 
+            this.colTopSpeed.Text = "Top speed";
+            this.colTopSpeed.Width = 165;
+            // 
+            // colManufacturer
+            // 
+            this.colManufacturer.Text = "Manufacturer";
+            this.colManufacturer.Width = 173;
+            // 
+            // colId
+            // 
+            this.colId.Text = "Id";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.carsLv);
             this.Controls.Add(this.addCarBtn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -137,6 +188,7 @@ namespace EnLabWinFormsApp
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.displacement)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.topSpeed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,6 +203,12 @@ namespace EnLabWinFormsApp
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button addCarBtn;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.ListView carsLv;
+        private System.Windows.Forms.ColumnHeader colDisplacement;
+        private System.Windows.Forms.ColumnHeader colTopSpeed;
+        private System.Windows.Forms.ColumnHeader colManufacturer;
+        private System.Windows.Forms.ColumnHeader colId;
     }
 }
 

@@ -39,9 +39,13 @@ namespace RoLabWinFormsApp
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.addAnimalBtn = new System.Windows.Forms.Button();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.animalsLv = new System.Windows.Forms.ListView();
+            this.colId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colSpecies = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.id)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // id
@@ -66,6 +70,8 @@ namespace RoLabWinFormsApp
             0,
             0,
             0});
+            this.id.Validating += new System.ComponentModel.CancelEventHandler(this.id_Validating);
+            this.id.Validated += new System.EventHandler(this.id_Validated);
             // 
             // name
             // 
@@ -73,17 +79,12 @@ namespace RoLabWinFormsApp
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(270, 22);
             this.name.TabIndex = 1;
+            this.name.Validating += new System.ComponentModel.CancelEventHandler(this.name_Validating);
+            this.name.Validated += new System.EventHandler(this.name_Validated);
             // 
             // species
             // 
             this.species.FormattingEnabled = true;
-            this.species.Items.AddRange(new object[] {
-            "None",
-            "Chimpanzee",
-            "Elephant",
-            "Lion",
-            "Tiger",
-            "Zebra"});
             this.species.Location = new System.Drawing.Point(111, 61);
             this.species.Name = "species";
             this.species.Size = new System.Drawing.Size(270, 24);
@@ -126,15 +127,45 @@ namespace RoLabWinFormsApp
             this.addAnimalBtn.UseVisualStyleBackColor = true;
             this.addAnimalBtn.Click += new System.EventHandler(this.addAnimalBtn_Click);
             // 
-            // errorProvider1
+            // errorProvider
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.errorProvider.ContainerControl = this;
+            // 
+            // animalsLv
+            // 
+            this.animalsLv.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colId,
+            this.colSpecies,
+            this.colName});
+            this.animalsLv.HideSelection = false;
+            this.animalsLv.Location = new System.Drawing.Point(27, 161);
+            this.animalsLv.Name = "animalsLv";
+            this.animalsLv.Size = new System.Drawing.Size(738, 259);
+            this.animalsLv.TabIndex = 7;
+            this.animalsLv.UseCompatibleStateImageBehavior = false;
+            this.animalsLv.View = System.Windows.Forms.View.Details;
+            // 
+            // colId
+            // 
+            this.colId.Text = "Id";
+            this.colId.Width = 68;
+            // 
+            // colSpecies
+            // 
+            this.colSpecies.Text = "Species";
+            this.colSpecies.Width = 174;
+            // 
+            // colName
+            // 
+            this.colName.Text = "Name";
+            this.colName.Width = 224;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.animalsLv);
             this.Controls.Add(this.addAnimalBtn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -145,7 +176,7 @@ namespace RoLabWinFormsApp
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.id)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,7 +191,11 @@ namespace RoLabWinFormsApp
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button addAnimalBtn;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.ListView animalsLv;
+        private System.Windows.Forms.ColumnHeader colId;
+        private System.Windows.Forms.ColumnHeader colSpecies;
+        private System.Windows.Forms.ColumnHeader colName;
     }
 }
 

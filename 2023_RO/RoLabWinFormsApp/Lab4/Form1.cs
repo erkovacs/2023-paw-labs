@@ -1,4 +1,4 @@
-﻿using Lab4.Entities;
+﻿using RoLabWinFormsApp.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Lab4
+namespace RoLabWinFormsApp
 {
     public partial class Form1 : Form
     {

@@ -10,7 +10,7 @@ namespace EnLabWinFormsApp.Entities
     {
         private List<Car> _cars;
         public string Name { get; set; }
-
+        public List<Car> Cars { get { return _cars; } }
         public RaceTrack() { }
 
         public RaceTrack(string name) {
@@ -22,5 +22,7 @@ namespace EnLabWinFormsApp.Entities
         {
             _cars.Add(car);
         }
+
+       
     }
 }
